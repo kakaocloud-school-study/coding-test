@@ -9,7 +9,7 @@ public class Permutations {
     /*문제 해결 로직
      * 1. 결과를 저장할 리스트를 초기화한다.
      * 2. 백트래킹 함수를 정의한다.
-     * 3. 백트리킹을 실행한다.
+     * 3. 백트래킹을 실행한다.
      * */
 
     public List<List<Integer>> permute(int[] nums) {
@@ -34,6 +34,7 @@ public class Permutations {
         for (int num : nums) {
             // 현재 숫자가 이미 경로에 있는지 확인
             // 순열은 각 숫자가 유일해야되니까.
+            // 조건 맞으면 다음 반복 루프로 즉시 진행.
             if (path.contains(num)) continue;
 
             // 경로에 숫자 추가
@@ -55,7 +56,8 @@ public class Permutations {
             input = input.replaceAll("\\[|\\]","").trim();
             String[] numbers = input.split(",");
 
-            // 문자열을 정수 배열로 변환
+            // [1,2,3] -> 대괄호 삭제, ','구분자로 나눔
+            // 공백제거하고 다시 배열 자료구조에 넣어줌.
             int[] nums = new int[numbers.length];
             for (int i = 0; i < numbers.length; i++) {
                 nums[i] = Integer.parseInt(numbers[i].trim());
