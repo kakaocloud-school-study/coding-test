@@ -47,5 +47,4 @@ public class Combinations {
         // 결과 출력
         System.out.println(result);
     }
-
 }
