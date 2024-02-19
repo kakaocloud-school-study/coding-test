@@ -1,0 +1,12 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        // XOR 연산 하고 binary로 전환
+        String bin = Integer.toBinaryString(x ^ y);
+        int answer = 0;
+        // 1이 있을 때마다 count
+        for (char c : bin.toCharArray()) {
+            if (c == '1') answer++;
+        }
+        return answer;
+    }
+}
