@@ -1,0 +1,32 @@
+class Solution {
+    public int[][] kClosest(int[][] points, int k) {
+        int[][] answer = new int[k][2];
+
+        int[][] dist = new int[points.length][3];
+
+        // 거리 제곱을 포함한 배열 생성
+        for (int i = 0; i < points.length; i++) {
+            dist[i][0] = points[i][0];
+            dist[i][1] = points[i][1];
+            dist[i][2] = getDist2(points[i]);
+        }
+
+        // 거리 제곱에 따라 정렬
+        Arrays.sort(dist, (a, b) -> {
+            return a[2] - b[2];
+        });
+
+        // 정답 배열 복사(거리 제곱을 뺌)
+        for (int i = 0; i < k; i++) {
+            answer[i][0] = dist[i][0];
+            answer[i][1] = dist[i][1];
+        }
+
+        return answer;
+    }
+
+    // 거리 제곱을 구하는 함수
+    private int getDist2(int[] point) {
+        return point[0] * point[0] + point[1] * point[1];
+    }
+}
